@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-deployment
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: <pod-name>
+  template:
+    metadata:
+      labels:
+        app: <pod-name>
+    spec:
+      containers:
+        - name: <container-name>
+          image: <amazon-ecr-url>/<image-name>:<tag>
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 80
